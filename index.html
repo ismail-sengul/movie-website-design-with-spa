@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="İsmail Şengül,Yavuz Selim İlik">
+    <meta name="keywords" content="Ege Üniversitesi,Üst Ortam Programlama,Proje,İsmail Şengül,Yavuz Selim İlik,Film,Dizi,Oyuncular,Aksiyon,Komedi,Animasyon,Bilim Kurgu,Gerilim,Korku,Macera">
+    <meta name="description" content="İsmail Şengül-Yavuz Selim İlik Ege Üniversitesi Üst Ortam Programlama Projesi">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Anasayfa</title>
+</head>
+<body>
+
+    <!--Logoyu içeren header-->
+    <header class="text-center bg-dark d-none d-md-block">
+        <img src="./img/logo.png" alt="">
+    </header>
+    <!--Navbar-->
+    <nav class="navbar navbar-dark bg-dark navbar-expand-md sticky-top">
+        <!--Logonun ve site adının olduğu navbar-brand-->
+        <span class="navbar-brand mr-auto">
+            <img src="./img/logo.png" class="d-md-none d-block" alt="">
+            <span class="d-md-block d-none">EGEdb</span>
+        </span>
+        <!--Sitenin mobile geçtiğinde responsive bir şekilde gözükebilmesi için oluşturduğumuz navbar-toggler-->
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#toggleItems">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--Navbar içindeki linkler-->
+        <div class="collapse navbar-collapse" id="toggleItems">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item d-block d-md-none"><h2 class="text-light text-center border-bottom">EGEdb</h2></li>
+                <li class="nav-item"><a href="#" class="nav-link" onclick="sayfaIceriginiGetir('anasayfa')">Anasayfa</a></li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Kategoriler</a>
+
+                        <div class="dropdown-menu text-center rounded-0 bg-dark mt-2">
+                            <a href="#" class="btn dropdown-item text-secondary" onclick="sayfaIceriginiGetir('aksiyon')">Aksiyon</a>
+                            <a href="#" class="btn dropdown-item text-secondary" onclick="sayfaIceriginiGetir('bilim-kurgu')">Bilim-Kurgu</a>
+                            <a href="#" class="btn dropdown-item text-secondary" onclick="sayfaIceriginiGetir('fantastik')">Fantastik</a>
+                            <a href="#" class="btn dropdown-item text-secondary" onclick="sayfaIceriginiGetir('komedi')">Komedi</a>
+                            <a href="#" class="btn dropdown-item text-secondary"  onclick="sayfaIceriginiGetir('korku')">Korku</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link" onclick="sayfaIceriginiGetir('iletisim')">İletişim</a></li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="" id="modalKayitOl" class="nav-link btn btn-dark" data-bs-toggle="modal" data-bs-target="#kayitOl">Kayıt Ol</a></li>
+                <li class="nav-item"><a href="" id="modalGirisYap" class="nav-link btn btn-dark" data-bs-toggle="modal" data-bs-target="#girisYap">Giriş Yap</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--Kayıt Ol Modal-->
+    <div class="modal fade mx-auto" id="kayitOl">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Kayıt Ol</h4>
+                    <button type="button" data-bs-dismiss="modal" class="btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="nickname-kayit">Kullanıcı adı: <mark>*</mark> </label>
+                            <input type="text" id="nickname-kayit" class="form-control" placeholder="Nickname giriniz..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password-kayit">Şifre: <mark>*</mark> </label>
+                            <input type="password" id="password-kayit" class="form-control" placeholder="Şifre giriniz..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password-kayit-tekrar">Şifre tekrar giriniz: <mark>*</mark> </label>
+                            <input type="password" id="password-kayit-tekrar" class="form-control" placeholder="Şifre tekrar giriniz..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-kayit">Email: <mark>*</mark> </label>
+                            <input type="email" id="email-kayit" class="form-control" required placeholder="Email giriniz...">
+                        </div>
+                        <div class="modal-footer form-group">
+                            <a href = "#" id="kayitOlBtn" data-bs-dismiss="modal" class="btn ml-auto btn-dark">Kayıt Ol</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Giriş Yap Modal-->
+    <div class="modal fade mx-auto" id="girisYap">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Giriş Yap</h4>
+                    <button type="button" data-bs-dismiss="modal" class="btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="nickname-giris">Kullanıcı adı: <mark>*</mark> </label>
+                            <input type="text" id="nickname-giris" class="form-control" placeholder="Nickname giriniz..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password-giris">Şifre: <mark>*</mark> </label>
+                            <input type="password" id="password-giris" class="form-control" placeholder="Şifre giriniz..." required>
+                        </div>
+                        <p><a href="#" class="text-secondary">Şifremi Unuttum.</a></p>
+                        <div class="modal-footer form-group">
+                            <a href="#" id="girisYapBtn" data-bs-dismiss="modal" class="btn ml-auto btn-dark">Giriş Yap</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Article ve aside kısımlarının olduğu satır-->
+    <div class="row container mx-auto">
+        <!--Anasayfa içindeki içerikler-->
+        <article class="col-lg-9 col-12 mt-3" id="degistirilenKısım">
+            <!--Yeni Çıkanlar Carousel'i-->
+            <div class="card bg-transparent border-0">
+                <div class="card-header bg-dark rounded-top">
+                    <p class="text-light display-4 text-center">Yeni Çıkanlar</p>
+                </div>
+                <div class="card-body bg-dark p-0">
+                    <div class="carousel slide" data-bs-ride="carousel" id="yeniCikanlarCarousel">
+                        <ol class="carousel-indicators">
+                            <li data-bs-target="#yeniCikanlarCarousel" data-bs-slide-to="0" class="active"></li>
+                            <li data-bs-target="#yeniCikanlarCarousel" data-bs-slide-to="1"></li>
+                            <li data-bs-target="#yeniCikanlarCarousel" data-bs-slide-to="2"></li>
+                            <li data-bs-target="#yeniCikanlarCarousel" data-bs-slide-to="3"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <a href="#" onclick="sayfaIceriginiGetir('spiderman')">
+                                    <img src="./img/spiderman-1.jpeg" class="d-block w-100" alt="">
+                                </a>
+                                <div class="carousel-caption">
+                                    <h5>Spiderman No Way Home</h5>
+                                    <p class="d-md-block d-none">Örümcek-Adam: Eve Dönüş Yok Columbia Pictures ve Marvel Studios tarafından ortaklaşa üretilen ve Sony Pictures tarafından dağıtılan, Marvel Comics karakteri Örümcek Adam çizgi romanlarından uyarlanan ABD süper kahraman filmidir.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <a href="#" onclick="sayfaIceriginiGetir('matrix')">
+                                    <img src="./img/matrix-ressurrections-1.jpg" class="d-block w-100" alt="">
+                                </a>
+                            
+                                <div class="carousel-caption">
+                                    <h5>Matrix Resurrections</h5>
+                                    <p class="d-md-block d-none">Matrix Resurrections, The Matrix serisinin dördüncü filmidir. 22 Aralık 2021 tarihinde vizyona girmesi planlanan film, önceki üç filmi yöneten Wachowski kardeşlerden biri olan Lana Wachowski tarafından yazıldı ve yönetildi. Filmin başrollerinde Keanu Reeves ve Carrie-Anne Moss yer almaktadır.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <a href="#" onclick="sayfaIceriginiGetir('dune')">
+                                    <img src="./img/dune-1.jpg" class="d-block w-100" alt="">
+                                </a>
+                            
+                                <div class="carousel-caption">
+                                    <h5>Dune</h5>
+                                    <p class="d-md-block d-none">
+                                    Dune: Çöl Gezegeni, 22 Ekim 2021 tarihinde vizyona giren, Denis Villeneuve’ün yönettiği, başrollerini Timothée Chalamet, Rebecca Ferguson, Oscar Isaac, Josh Brolin, Stellan Skarsgård, Dave Bautista, Zendaya, David Dastmalchian, Stephen Henderson, Charlotte Rampling, Jason Momoa ve Javier Bardem'in paylaştığı Amerikan bilimkurgu filmidir.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <a href="#" onclick="sayfaIceriginiGetir('dont-look-up')">
+                                    <img src="./img/dont-look-up-1.jpg" class="d-block w-100" alt="">
+                                </a>
+
+                                <div class="carousel-caption">
+                                    <h5>Don't Look Up</h5>
+                                    <p class="d-md-block d-none">
+                                    Don't Look Up, Adam McKay tarafından yazılan, üretilen ve yönetilen 2021 Amerikan hiciv bilim kurgu filmidir. Leonardo DiCaprio ve Jennifer Lawrence, Dünya'yı yok edecek yaklaşan bir kuyruklu yıldız hakkında bir medya turu aracılığıyla insanlığı uyarmaya çalışan iki düşük seviyeli gökbilimciyi canlandırıyor.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#yeniCikanlarCarousel" role="button" data-bs-slide="prev" class="carousel-control-prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a href="#yeniCikanlarCarousel" role="button" data-bs-slide="next" class="carousel-control-next">
+                        <span class="carousel-control-next-icon"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!--Her bir kategori için anasayfada gözüken kısımlar-->
+            <div class="anasayfa-kategoriler mt-2">
+                <!--Anasayfada gözüken Aksiyon filmleri-->
+                <div class="card bg-transparent border-0">
+                    <div class="card-header bg-dark">
+                        <h1 class="text-center"><a href="#" class="text-white" onclick="sayfaIceriginiGetir('aksiyon')">Aksiyon</a></h1>
+                    </div>
+                    <div class="card-body bg-dark">
+                        <div class="film-afisi">
+                            <a href="#">
+                                <img src="./img/spiderman-film-afisi.jpg" alt="" onclick="sayfaIceriginiGetir('spiderman')">
+                            </a>
+                        </div>
+                        <div class="film-afisi">
+                            <a href="#" onclick="sayfaIceriginiGetir('gladiator')">
+                                <img src="./img/gladiator-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="film-afisi">
+                            <a href="#" onclick ="sayfaIceriginiGetir('braveheart')">
+                                <img src="./img/braveheart-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="film-afisi">
+                            <a href="#" onclick ="sayfaIceriginiGetir('troy')">
+                                <img src="./img/troy-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--Anasayfada Gözüken Bilim Kurgu Filmleri-->
+                <div class="card bg-transparent border-0 mt-2">
+                    <div class="card-header bg-dark">
+                        <h1 class="text-center"><a href="#" class="text-white" onclick="sayfaIceriginiGetir('bilim-kurgu')">Bilim-Kurgu</a></h1>
+                    </div>
+                    <div class="card-body bg-dark">
+                        <div class="film-afisi">
+                            <a href="#" onclick ="sayfaIceriginiGetir('dune')">
+                                <img src="./img/dune-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="film-afisi">
+                            <a href="#" onclick ="sayfaIceriginiGetir('matrix')">
+                                <img src="./img/matrix-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="film-afisi">
+                            <a href="#" onclick ="sayfaIceriginiGetir('inception')">
+                                <img src="./img/inception-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="film-afisi">
+                            <a href="#" onclick ="sayfaIceriginiGetir('interstellar')">
+                                <img src="./img/interstellar-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--Anasayfada Gözüken Fantastik Filmler-->
+                <div class="card bg-transparent border-0 mt-2">
+                    <div class="card-header bg-dark">
+                        <h1 class="text-center"><a href="#" class="text-white" onclick="sayfaIceriginiGetir('fantastik')">Fantastik</a></h1>
+                    </div>
+                    <div class="card-body bg-dark">
+                        <div class="film-afisi">
+                            <a href="#" onclick="sayfaIceriginiGetir('lotr')">
+                                <img src="./img/lotr-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="film-afisi">
+                            <a href="#" onclick="sayfaIceriginiGetir('yesil-yol')">
+                                <img src="./img/yesil-yol-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="film-afisi">
+                            <a href="#" onclick="sayfaIceriginiGetir('pirates')">
+                                <img src="./img/pirates-of-caribbean-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="film-afisi">
+                            <a href="#" onclick="sayfaIceriginiGetir('hobbit')">
+                                <img src="./img/hobbit-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--Anasayfada Gözüken Komedi Filimleri-->
+                <div class="card bg-transparent border-0 mt-2">
+                    <div class="card-header bg-dark">
+                        <h1 class="text-center"><a href="#" class="text-white" onclick="sayfaIceriginiGetir('komedi')">Komedi</a></h1>
+                    </div>
+                    <div class="card-body bg-dark">
+                        <div class="film-afisi">
+                            <a href="#" onclick ="sayfaIceriginiGetir('dont-look-up')">
+                                <img src="./img/dont-look-up-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="film-afisi">
+                            <a href="#" onclick ="sayfaIceriginiGetir('forrest-gump')">
+                                <img src="./img/forrest-gump-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="film-afisi">
+                            <a href="#" onclick ="sayfaIceriginiGetir('hangover')">
+                                <img src="./img/hangover-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="film-afisi">
+                            <a href="#" onclick ="sayfaIceriginiGetir('yes-man')">
+                                <img src="./img/yes-man-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--Anasayfada Gözüken Korku Filmleri-->
+                <div class="card bg-transparent border-0 my-2">
+                    <div class="card-header bg-dark">
+                        <h1 class="text-center"><a href="#" class="text-white"  onclick="sayfaIceriginiGetir('korku')">Korku</a></h1>
+                    </div>
+                    <div class="card-body bg-dark">
+                        <div class="film-afisi">
+                            <a href="#" onclick ="sayfaIceriginiGetir('paranormal')">
+                                <img src="./img/paranormal-activity-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="film-afisi">
+                            <a href="#" onclick ="sayfaIceriginiGetir('shining')">
+                                <img src="./img/shining-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="film-afisi">
+                            <a href="#" onclick ="sayfaIceriginiGetir('scream')">
+                                <img src="./img/scream-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="film-afisi">
+                            <a href="#" onclick ="sayfaIceriginiGetir('saw')">
+                                <img src="./img/saw-film-afisi.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    
+        <aside class="col-lg-3 col-12 mt-3">
+            <!--Kategoriler kısmı-->
+            <div class="card bg-dark mb-2">
+                <div class="card-header">
+                    <h2 class="text-white text-center">Kategoriler</h2>
+                </div>
+                <div class="card-body">
+                    <ol class="list-group">
+                        <li class="list-group item mb-1">
+                            <a href="#" class="btn btn-secondary" onclick="sayfaIceriginiGetir('aksiyon')">Aksiyon</a>
+                        </li>
+                        <li class="list-group item mb-1">
+                            <a href="#" class="btn btn-secondary" onclick="sayfaIceriginiGetir('bilim-kurgu')">Bilim-Kurgu</a>
+                        </li>
+                        <li class="list-group item mb-1">
+                            <a href="#" class="btn btn-secondary" onclick="sayfaIceriginiGetir('fantastik')">Fantastik</a>
+                        </li>
+                        <li class="list-group item mb-1">
+                            <a href="#" class="btn btn-secondary" onclick="sayfaIceriginiGetir('komedi')">Komedi</a>
+                        </li>
+                        <li class="list-group item mb-1">
+                            <a href="#" class="btn btn-secondary" onclick="sayfaIceriginiGetir('korku')">Korku</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <!--Son yorumları gösteren kısım-->
+            <div class="card bg-dark my-2">
+                <div class="card-header">
+                    <h2 class="text-center text-white">Son Yorumlar</h2>
+                </div>
+                <div class="card-body" id="sonYorumlar">
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <h5><a href="#" onclick="sayfaIceriginiGetir('matrix')">Matrix Ressurrections</a></h5>
+                            <p class="text-light">Izlerken sıkıldım ve de begenmedim tavsiye edilmez 5/10</p>
+                            <small class="float-right">ismailsengul</small>
+                        </div>
+                    </div>
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <h5><a href="#" onclick="sayfaIceriginiGetir('saw')">Testere</a></h5>
+                            <p class="text-light">Kesinlikle izlemeniz gereken bir seri. aksiyon-gerilim-korku her türü barındırıyor.</p>
+                            <small class="float-right">yavuzselimilik</small>
+                        </div>
+                    </div>
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <h5><a href="#" onclick="sayfaIceriginiGetir('gladiator')">Gladyatör</a></h5>
+                            <p class="text-light">yıllar sonra tekrar izledim efsane 10/10</p>
+                            <small class="float-right">sengul61</small>
+                        </div>
+                    </div>
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <h5><a href="#" onclick="sayfaIceriginiGetir('dune')">Dune</a></h5>
+                            <p class="text-light">İlginç bir yapım artıları olduğu kadar eksi yönleri de var diyaloglar çok fazla iyi değil, oyuncular siz asıl bundan sonraki yapımı görün der gibi bir hava içinde, açıkçası insanı içine çekmiyor görsellik güzel muhtemelin herkesin beklentisi bundan sonraki yapım daha güzel olacağı yönünde</p>
+                            <small class="float-right">yavuz43</small>
+                        </div>
+                    </div>
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <h5><a href="#" onclick="sayfaIceriginiGetir('lotr')">Yüzüklerin Efendisi:Yüzük Kardeşliği</a></h5>
+                            <p class="text-light">Seriyi kitaplarını okumak için çok uzun zamandır baştan sona izlememiştim, tekrar izledim. Mükemmel, gerçekten mükemmel</p>
+                            <small class="float-right">yavuz43</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+    
+    
+    <!--Footer kısmı-->
+    <footer class="bg-dark p-2 rounded">
+        <p class="text-white text-center mt-1">
+            Filmler hakkında bilgiler Wikipedia Sitesinden Alınmıştır
+        </p>
+        <p class="float-right">
+            <a href="" id="toTop" class="btn btn-outline-light">Üste dön</a>
+        </p>
+    </footer>
+
+
+
+    <!--Javascript kütüphaneleri-->
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/sayfalar-spa.js"></script>
+    <script src="./js/account.js"></script>
+</body>
+</html>

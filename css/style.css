@@ -1,0 +1,163 @@
+body{
+    background-color: #000; /*Arkaplanı siyah olarak ayarladık*/
+}
+
+a:hover{
+    text-decoration: none; /*Bütün linklerin altındaki çizgiyi sildik*/
+}
+
+/*Header Css Kısmı*/
+header img{ /**/
+    height: 8rem;
+    width: 8rem;
+}
+
+/*Navbar Css Kısmı*/
+.navbar-brand img{ /*Logonun yükseklik genişliğini girdik*/
+    height: 3rem;
+    width: 3rem;
+}
+
+
+/*Article(Sitede değiştirilen kısım) Css Kısmı*/
+article div.row div.carousel img{ /*Oluşturduğumuz carouselin yüksekliğini ve içinde bulunduğu alanı kaplamasını ayarladık*/
+    width: 100%;
+    object-fit: cover;
+}
+
+article .carousel img:hover{ /*Carouseldeki imglerin üzerine mouse ile gelince parlaklığı azalttık ve transition ile daha güzel bir şekilde geçiş yapmasını sağladık*/
+    opacity: 0.9;
+    transition: opacity 0.3s;
+}
+
+
+/*Son Yorumlar Css Kısmı*/
+#sonYorumlar div.card{ /*Son yorumlar kısmının arka planını, marginlerini ve border'ini ayarladık*/
+    background-color: #474d55;
+    border: 1px solid white;
+    margin-bottom: 0.5rem;
+}
+#sonYorumlar div.card small{ /*Yorumları kimin yazdığını altta görülen color ile gösterdik*/
+    color: #8498ad;
+}
+#sonYorumlar div.card:hover{ /*bir son yorum kartının üzerine mouse ile gelindiğinde daha güzel bir görünsün diye background coloru transition ile değiştirdik*/
+    background-color: #576069;
+    transition: background-color 0.2s;
+}
+#sonYorumlar div.card a{ /*Son yorumlar içindeki film adı linkinin colorunu ayarladık*/
+    text-decoration: none;
+    color: #8498ad;
+}
+#sonYorumlar div.card a:hover{ /*film adı linkine mouse ile üzerine colorun değişmesini sağladık*/
+    color: #000;
+    transition: color 0.3s;
+}
+
+/*Anasayfada gösterilen kategoriler ve kategori sayfalarının Css Kısmı*/
+
+.category-pages{ /*kategori sayfalarının footere yapışık bir şekilde görünmemesi için height kısmını ayarladık*/
+    height: 99%;
+}
+.anasayfa-kategoriler .film-afisi, .category-pages .film-afisi{ /*Film afişlerinin bulunduğu containere bir width padding verdik ve float ile sola yasladık*/
+    float: left;
+    width: 25%;
+    padding: 10px;
+}
+.anasayfa-kategoriler .film-afisi img , .category-pages img{ /*film afişi içindeki img leri düzgün bir şekilde gösterdik*/
+    height: 20rem;
+    width: 100%;
+    object-fit: contain;
+}
+.anasayfa-kategoriler .film-afisi img:hover ,.category-pages img:hover{ /*film afişlerine mouse ile geldiğimizde opacity nin değişmesi işlemini yaptık*/
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+
+/*Film Sayfalarının Css Kısmı*/
+.film-sayfalari .card-header .film-afisi-resmi img{ /*Film sayfalarındaki img in sola yaslanması ve genişlik olarak article kısmının %25 inin ayarlamasını yaptık*/
+    width: 25%;
+    float: left;
+}
+.film-sayfalari .card-header div.film-icerigi{/*Diğer içerikler %75 lik kısımda olacak*/
+    width: 75%;
+    float: right;
+}
+.star{ /*Imdb puanları için kullanılan yıldız img sinin genişlik ve yüksekliğini ayarladık*/
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.film-sayfalari video{ /*Film sayfalarındaki videoların yükseklik genişliği ayarlandı*/
+    width: 50%;
+    height: 20rem;
+}
+
+/*Kullanıcı yorumlarının Css Kısmı*/
+.kullanici-yorumlari .card{ /*Her kullanıcı yorumu için bir border margin verdik ve parlaklığını biraz azalttık*/
+    margin-bottom: 0.4rem;
+    border: 1px solid black;
+    opacity: 0.9;
+}
+.kullanici-yorumlari .card:hover{ /*Üzerine gelindiğinde parlaklığı arttırdık ve borderin beyaz olmasını sağladık*/
+    opacity: 1;
+    transition: all 0.5s;
+    border-color: #fff;
+    cursor: pointer;
+}
+.kullanici-yorumlari .kullanici-profili{ /*Kullanıcı profili yorum kartının solunda %20 lik bir genişliğe sahip*/
+    float: left;
+    width: 20%;
+}
+.kullanici-yorumlari .yorum-kısmı{ /*Kullanıcının yaptığı yorum kısmına %75 lik bir genişlik verip sağa yasladık*/
+    float: right;
+    width: 75%;
+}
+.kullanici-yorumlari img{ /*Kullanıcı yorumlarındaki user img sine bir yükseklik verdik*/
+    height: 8rem;
+}
+.iletisim{ /*İletişim kısmı masaüstü ve tablette genişliği %50 olarak ayarladık*/
+    width: 50%;
+}
+#toTop{ /*Üste gitme butonunu alt belli bir margin vererek sabitledik*/
+    position: fixed;
+    bottom: 1.5rem;
+    right: 3rem;
+}
+@media screen and (max-width:992px) { /*Masaüstü ve tablet arası responsive*/
+    html{ /*Web sitesindeki çoğu bileşeni responsive bir şekilde azalıp artmasını rem ile ayarladığımızdan html kısmındaki font-sizeyi biraz düşürdük*/
+        font-size: 14px;
+    }
+}
+@media screen and (max-width:768px) { /*Tablet Responsive*/
+    html{ 
+        font-size: 12px;
+    } /*Anasayfadaki ve kategoriler sayfasındaki film afişlerini tablet kısmında genişliğini %25 den %50 ye yükselttik*/
+    .anasayfa-kategoriler .film-afisi, .category-pages .film-afisi{
+        display: inline-block;
+        width: 50%;
+    }
+    .film-sayfalari video{ /*Film sayfalarındaki video kısmını tablet kısmından sonra %50 lik genişlikten %100 lük genişlige çıkardık ve altındaki açıklama kısmı ile arasında bir mesafe olması için margini 1 rem arttırdık*/
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}
+
+@media screen and (max-width:576px) { /*Mobil Responsive*/
+    .film-sayfalari .card-header .film-afisi-resmi img{ /*Film sayfalarındaki film afişleri mobile geçtiğinde %100 genişlik yaparak bulunduğu alanı kaplamasını sağladık*/
+        width: 100%;
+        float: none;
+        height: 30rem;
+    }
+    .anasayfa-kategoriler .film-afisi, .category-pages .film-afisi{ /*Anasayfa ve kategori sayfalarındaki film afişlerini mobilde genişliğini %100 olarak ayarladık*/
+        display: inline-block;
+        width: 100%;
+    }
+    .film-sayfalari .card-header div.film-icerigi{ /*Film sayfalarındaki film hakkında bilgi veren kısmı mobilde %100 genişliğe ayarladık*/
+        width: 100%;
+        float: none;
+    }
+    .iletisim{ /*İletişim sayfasındaki kısımları mobilde alt alta gözükmesi için 2 kısmında genişliğini %100 olarak ayarladık*/
+        width: 100%;
+    }
+}
+
